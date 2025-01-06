@@ -6,7 +6,7 @@ on:
       - main # Trigger the workflow only on pushes to the 'main' branch
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -39,4 +39,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # Vite outputs the build to the 'dist' folder by default
+          publish_dir: ./dist
+          force_orphan: true # Use this option for the first deployment
+
